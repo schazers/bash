@@ -13,8 +13,8 @@ function game.update(self, dt)
     local inputs = self:getInputsForClient(entity.clientId) or {}
     local moveX = (inputs.right and 1 or 0) - (inputs.left and 1 or 0)
     local moveY = (inputs.down and 1 or 0) - (inputs.up and 1 or 0)
-    entity.x = math.min(math.max(0, entity.x + 200 * moveX * dt), 380)
-    entity.y = math.min(math.max(0, entity.y + 200 * moveY * dt), 380)
+    entity.x = math.min(math.max(0, entity.x + 200 * moveX * dt), love.graphics.getWidth() - 20)
+    entity.y = math.min(math.max(0, entity.y + 200 * moveY * dt), love.graphics.getHeight() - 20)
   end
 end
 
@@ -43,8 +43,8 @@ local network, server, client = simulsim.createGameNetwork(game, { mode = 'multi
 function server.clientconnected(client)
   server.fireEvent('spawn-player', {
     clientId = client.clientId,
-    x = 100 + 80 * math.random(),
-    y = 100 + 80 * math.random(),
+    x = love.graphics.getWidth() / 8 + love.graphics.getWidth() / 10 * math.random(),
+    y = love.graphics.getWidth() / 8 + love.graphics.getWidth() / 10 * math.random(),
     color = { math.random(), 1, math.random() }
   })
 end
@@ -68,7 +68,7 @@ end
 function client.draw()
   -- Clear the screen
   love.graphics.setColor(0.1, 0.1, 0.1)
-  love.graphics.rectangle('fill', 0, 0, 400, 400)
+  love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
   -- Draw each entity
   for _, entity in ipairs(client.game.entities) do
     love.graphics.setColor(entity.color)
