@@ -14,7 +14,7 @@ function game.update(self, dt)
     local moveX = (inputs.right and 1 or 0) - (inputs.left and 1 or 0)
     local moveY = (inputs.down and 1 or 0) - (inputs.up and 1 or 0)
     entity.x = math.min(math.max(0, entity.x + 200 * moveX * dt), 780)
-    entity.y = math.min(math.max(0, entity.y + 200 * moveY * dt), 780)
+    entity.y = math.min(math.max(0, entity.y + 200 * moveY * dt), 430)
   end
 end
 
