@@ -42,13 +42,13 @@ local network, server, client = simulsim.createGameNetwork(game, { mode = 'multi
 
 -- When a client connects to the server, spawn a playable entity for them to control
 function server.clientconnected(client)
-  local w = love.graphics.getWidth()
-  local h = love.graphics.getHeight()
-  print(w..', '..h)
+  -- local w = love.graphics.getWidth()
+  -- local h = love.graphics.getHeight()
+  -- print(w..', '..h)
   server.fireEvent('spawn-player', {
     clientId = client.clientId,
-    x = w/8 + w/10 * math.random(),
-    y = h/8 + h/10 * math.random(),
+    x = 100 + 80 * math.random(),
+    y = 100 + 80 * math.random(),
     color = { math.random(), 1, math.random() }
   })
 end
