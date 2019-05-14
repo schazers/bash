@@ -4,3 +4,4 @@ title: Bash
 owner: schazers
 primaryColor: 000000
 description: Square off with a friend.
+multiplayer: true
