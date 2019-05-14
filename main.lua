@@ -38,11 +38,13 @@ end
 
 -- Create a client-server network for the game to run on
 local network, server, client = simulsim.createGameNetwork(game, { mode = 'multiplayer' })
+--local network, server, client = simulsim.createGameNetwork(game, { mode = 'development' })
 
 -- When a client connects to the server, spawn a playable entity for them to control
 function server.clientconnected(client)
   local w = love.graphics.getWidth()
   local h = love.graphics.getHeight()
+  print(w..', '..h)
   server.fireEvent('spawn-player', {
     clientId = client.clientId,
     x = w/8 + w/10 * math.random(),
